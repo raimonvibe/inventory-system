@@ -13,7 +13,7 @@ import './App.css'
 function App() {
   const { theme, toggleTheme } = useTheme()
   const [activeView, setActiveView] = useState('dashboard')
-  const [apiUrl, setApiUrl] = useState('http://localhost:8000')
+  const [apiUrl] = useState('http://localhost:8000')
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
