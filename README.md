@@ -2,6 +2,8 @@
 
 A modern inventory management system with dark mode, built with FastAPI backend and React frontend.
 
+![Inventory Overview](./inventory.png)
+
 ## Features
 
 - **Dashboard**: Overview of key metrics and charts
