@@ -8,12 +8,13 @@ import { Suppliers } from './components/Suppliers.tsx'
 import { Users } from './components/Users.tsx'
 import { Analytics } from './components/Analytics.tsx'
 import { Settings } from './components/Settings.tsx'
+import { config } from './config'
 import './App.css'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
   const [activeView, setActiveView] = useState('dashboard')
-  const [apiUrl] = useState('http://localhost:8000')
+  const [apiUrl, setApiUrl] = useState(config.apiUrl)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
@@ -34,7 +35,7 @@ function App() {
       case 'analytics':
         return <Analytics apiUrl={apiUrl} />
       case 'settings':
-        return <Settings theme={theme} toggleTheme={toggleTheme} />
+        return <Settings theme={theme} toggleTheme={toggleTheme} apiUrl={apiUrl} setApiUrl={setApiUrl} />
       default:
         return <Dashboard apiUrl={apiUrl} />
     }
