@@ -47,8 +47,8 @@ export const Suppliers = ({ apiUrl }: SuppliersProps) => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [sortField, setSortField] = useState('name')
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
+  const [sortField] = useState('name')
+  const [sortDirection] = useState<'asc' | 'desc'>('asc')
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [selectedSupplier, setSelectedSupplier] = useState<Supplier | null>(null)
@@ -172,14 +172,7 @@ export const Suppliers = ({ apiUrl }: SuppliersProps) => {
     setFilteredSuppliers(result)
   }, [suppliers, searchTerm, sortField, sortDirection])
 
-  // const handleSort = (field: string) => {
-  //   if (field === sortField) {
-  //     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
-  //   } else {
-  //     setSortField(field)
-  //     setSortDirection('asc')
-  //   }
-  // }
+
 
   const handleAddSupplier = async () => {
     try {

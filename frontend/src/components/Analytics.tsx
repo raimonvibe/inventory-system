@@ -424,7 +424,7 @@ export const Analytics = ({ apiUrl }: AnalyticsProps) => {
                     dataKey="value"
                     nameKey="category"
                   >
-                    {analyticsData.salesByCategory.map((item, index) => (
+                    {analyticsData.salesByCategory.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
