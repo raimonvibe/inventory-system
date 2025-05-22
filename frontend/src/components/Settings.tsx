@@ -1,4 +1,5 @@
-import  { useState } from 'react'
+import { useState } from 'react'
+import { config } from '../config'
 import { 
   Moon, 
   Sun, 
@@ -31,11 +32,12 @@ import {
 interface SettingsProps {
   theme: string
   toggleTheme: () => void
+  apiUrl?: string
+  setApiUrl?: (url: string) => void
 }
 
-export const Settings = ({ theme, toggleTheme }: SettingsProps) => {
+export const Settings = ({ theme, toggleTheme, apiUrl, setApiUrl }: SettingsProps) => {
   const [activeTab, setActiveTab] = useState('appearance')
-  const [apiUrl, setApiUrl] = useState('http://localhost:8000')
   const [notificationsEnabled, setNotificationsEnabled] = useState(true)
   const [autoBackupEnabled, setAutoBackupEnabled] = useState(false)
   const [language, setLanguage] = useState('en')
@@ -52,7 +54,7 @@ export const Settings = ({ theme, toggleTheme }: SettingsProps) => {
   }
   
   const handleResetSettings = () => {
-    setApiUrl('http://localhost:8000')
+    if (setApiUrl) setApiUrl(config.apiUrl)
     setNotificationsEnabled(true)
     setAutoBackupEnabled(false)
     setLanguage('en')
@@ -180,8 +182,8 @@ export const Settings = ({ theme, toggleTheme }: SettingsProps) => {
                 <Label htmlFor="api-url">API URL</Label>
                 <Input 
                   id="api-url" 
-                  value={apiUrl} 
-                  onChange={(e) => setApiUrl(e.target.value)} 
+                  value={apiUrl || config.apiUrl} 
+                  onChange={(e) => setApiUrl && setApiUrl(e.target.value)} 
                   placeholder="Enter API URL" 
                 />
                 <p className="text-sm text-muted-foreground">
